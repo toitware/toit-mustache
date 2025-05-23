@@ -21,9 +21,12 @@ all: build/mustache$(EXE_EXT)
 build:
 	@mkdir -p build
 
-# TODO(floitsch): use the dependency file.
+-include build/mustache.dep
 build/mustache$(EXE_EXT): install-pkgs bin/mustache.toit build
-	@toit compile bin/mustache.toit -o build/mustache$(EXE_EXT)
+	@toit compile bin/mustache.toit \
+		-o build/mustache$(EXE_EXT) \
+		--dependency-file build/mustache.dep \
+		--dependency-format=ninja
 
 .PHONY: install-pkgs
 install-pkgs:
