@@ -43,6 +43,7 @@ main args:
             --multi,
       ]
       --run=:: run it
+  cmd.run args
 
 run parsed/cli.Parsed:
   input := parsed["input"]
