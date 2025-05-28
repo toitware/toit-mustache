@@ -15,6 +15,8 @@ SPEC_GIT := https://github.com/mustache/spec.git
 SPEC_PATH := tests/spec
 EXE_EXT := $(if $(filter Windows_NT,$(OS)),.exe,)
 
+TOIT ?= toit
+
 .PHONY: all
 all: build/mustache$(EXE_EXT)
 
@@ -23,20 +25,20 @@ build:
 
 -include build/mustache.dep
 build/mustache$(EXE_EXT): install-pkgs bin/mustache.toit build
-	@toit compile bin/mustache.toit \
+	@$(TOIT) compile bin/mustache.toit \
 		-o build/mustache$(EXE_EXT) \
 		--dependency-file build/mustache.dep \
 		--dependency-format=ninja
 
 .PHONY: install-pkgs
 install-pkgs:
-	@toit pkg install
-	@toit pkg install --project-root=bin
-	@toit pkg install --project-root=tests
+	@$(TOIT) pkg install
+	@$(TOIT) pkg install --project-root=bin
+	@$(TOIT) pkg install --project-root=tests
 
 .PHONY: test
 test: $(SPEC_PATH) install-pkgs
-	@toit tests/spec-test.toit $(SPEC_PATH)/specs
+	@$(TOIT) tests/spec-test.toit $(SPEC_PATH)/specs
 
 $(SPEC_PATH):
 	@git clone $(SPEC_GIT) $(SPEC_PATH)
