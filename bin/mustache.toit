@@ -45,11 +45,11 @@ main args:
       --run=:: run it
   cmd.run args
 
-run parsed/cli.Parsed:
-  input := parsed["input"]
-  output := parsed["output"]
-  strict := parsed["strict"]
-  templates := parsed["template"]
+run invocation/cli.Invocation:
+  input := invocation["input"]
+  output := invocation["output"]
+  strict := invocation["strict"]
+  templates := invocation["template"]
 
   // Filter out duplicates.
   seen := {}
