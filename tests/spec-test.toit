@@ -20,7 +20,7 @@ main args:
   stream.close
 
 run-test-suite path/string:
-  content := json.decode (file.read-content path)
+  content := json.decode (file.read-contents path)
   tests := content["tests"]
   tests.do: run-test it --suite=path
 
