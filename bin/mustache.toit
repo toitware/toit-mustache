@@ -62,4 +62,3 @@ run invocation/cli.Invocation:
 
   main-template := mustache.parse --strict=strict templates.first
   partials := templates[1..].map: mustache.parse --strict=strict it
-

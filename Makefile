@@ -1,4 +1,4 @@
-# Copyright (C) 2025 Toit contributors
+# Copyright (C) 2025 Toit contributors.
 #
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted.

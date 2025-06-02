@@ -74,7 +74,7 @@ jobs:
         run: |
           make test
 
-      - name: Tar.gz Linux executable
+      - name: Create tar.gz for Linux executable
         if: runner.os == 'Linux'
         run: |
           tar c -zvf build/${{env.APP_NAME}}-linux.tar.gz -C build ${{env.APP_NAME}}
@@ -176,7 +176,7 @@ jobs:
         run: |
           mkdir -p out
 
-      - name: Create a DMG
+      - name: Create DMG
         run: |
           # Use an empty directory as source so we don't accidentally add other files than the
           # ${{env.APP_NAME}} binary.
@@ -188,7 +188,7 @@ jobs:
               out/${{env.APP_NAME}}-macos.dmg \
               empty
 
-      - name: Create a ZIP
+      - name: Create ZIP
         run: |
           zip -j out/${{env.APP_NAME}}-macos.zip build/${{env.APP_NAME}}
 

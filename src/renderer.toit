@@ -44,7 +44,7 @@ class Renderer implements Visitor:
     text := node.text
     if indentation == "": return text
     if is-last and text[text.size - 1] == '\n':
-      // Don't add indentation if the text ends with a new-line.
+      // Don't add indentation if the text ends with a newline.
       return "$(indent_ text[..text.size - 1])\n"
     return indent_ text
 

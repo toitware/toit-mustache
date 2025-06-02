@@ -255,7 +255,7 @@ class PartialInheritanceNode extends PartialNode implements ContainerNode:
         throw "Block tag already overridden: $block-node.name"
       overridden[block-node.name] = block-node
     else if strict:
-      throw "Only block tags are allowed in partial inheritance nodes."
+      throw "Only block tags are allowed in partial inheritance nodes"
 
   children -> List:
     return overridden.values

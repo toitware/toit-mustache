@@ -14,7 +14,6 @@ An example of the comment-syntax version.
 See the 'comment-input.toit' file for the template.
 */
 
-
 VALUES ::= {
     "name": "Foo",
     "methods": [
