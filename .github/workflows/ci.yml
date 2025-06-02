@@ -80,6 +80,7 @@ jobs:
           tar c -zvf build/${{env.APP_NAME}}-linux.tar.gz -C build ${{env.APP_NAME}}
 
       - name: Sign Windows binary
+        if: runner.os == 'Windows' && (github.event_name == 'release' || inputs.sign_windows)
         uses: toitlang/action-sign-server@26db6e4021bfbd79af777d15964f1ab70bcfd3a4  # v1.0.7
         with:
           uri: ${{ vars.CERTUM_URI }}
