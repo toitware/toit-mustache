@@ -9,7 +9,10 @@ import host.file
 import mustache
 
 main args:
-  specs-path := args.first
+  specs-path/string := args.first
+  if specs-path.ends-with "toit" or specs-path.ends-with "toit.exe":
+    print "Bailing out, since likely called from the toit repository."
+    return
 
   stream := directory.DirectoryStream specs-path
   while name/string? := stream.next:
