@@ -74,7 +74,11 @@ main:
   input-path := fs.join my-path "comment-test-input.toit"
   input := (file.read-contents input-path).to-string
   converted := mustache.comment-template-to-mustache input
-  expect-equals EXPECTED-TEMPLATE converted
+  expected := EXPECTED-TEMPLATE.replace --all "\r" ""
+  converted = converted.replace --all "\r" ""
+  expect-equals expected converted
   parsed := mustache.parse converted
   rendered := mustache.render parsed --input=VALUES
-  expect-equals EXPECTED-FILLED rendered
+  expected-filled := EXPECTED-FILLED.replace --all "\r" ""
+  rendered = rendered.replace --all "\r" ""
+  expect-equals expected-filled rendered

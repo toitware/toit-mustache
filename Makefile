@@ -39,6 +39,7 @@ install-pkgs:
 .PHONY: test
 test: $(SPEC_PATH) install-pkgs
 	@$(TOIT) tests/spec-test.toit $(SPEC_PATH)/specs
+	@$(TOIT) tests/comment-test.toit
 
 $(SPEC_PATH):
 	@git clone $(SPEC_GIT) $(SPEC_PATH)
