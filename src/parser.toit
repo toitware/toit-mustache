@@ -212,7 +212,11 @@ class Parser_:
       if node is CloseNode:
         name := (node as CloseNode).name
         if stack.is-empty or (stack.last as ContainerNode).name != name:
-          throw "Unbalanced tags/sections"
+          if stack.is-empty:
+            throw "Unmatched close tag: $name"
+          else:
+            open-name := (stack.last as ContainerNode).name
+            throw "Unmatched close tag: $name, expected $open-name"
         stack.resize (stack.size - 1)
       else:
         if stack.is-empty:
